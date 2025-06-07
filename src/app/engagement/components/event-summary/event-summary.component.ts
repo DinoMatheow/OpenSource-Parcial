@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { EventsService } from '../../services/events.service';
+import { Events } from '../../interfaces/events.interface';
 
 @Component({
   selector: 'app-event-summary',
@@ -11,4 +13,10 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './event-summary.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventSummaryComponent { }
+export class EventSummaryComponent {
+
+  eventService = inject(EventsService);
+
+  events = input.required<Events>();
+
+}
