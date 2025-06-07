@@ -24,13 +24,13 @@ export class ToolbarComponent {
 translate = inject(TranslateService);
 
 
-//   constructor(public translate: TranslateService) {
-//     this.translate.addLangs(['de', 'en']);
-//     this.translate.setDefaultLang('en');
-//     this.translate.use('en');
+  constructor() {
+    this.translate.addLangs(['de', 'en']);
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
 
 
-// }
+}
 
 changeLang(lang: string) {
   this.translate.use(lang);
