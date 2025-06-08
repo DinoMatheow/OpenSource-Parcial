@@ -22,7 +22,7 @@ export const Publicroutes: Routes = [
         component: RaizComponent,
       },
       {
-        path: 'rating',
+        path: 'engagement/ratings/new',
         component: RatingComponent,
       },
       {
