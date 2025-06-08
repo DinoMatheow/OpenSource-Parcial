@@ -12,6 +12,7 @@
   <app-event-summary
    [event]="event"
    [attendees]="attendesResource.value()?.[$index] || null"
+   [rating]="ratingResource.value()?.[$index] || null"
   ></app-event-summary>
 </mat-grid-tile>
 }

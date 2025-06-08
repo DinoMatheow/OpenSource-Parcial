@@ -9,13 +9,15 @@
      {{ event().description }}
     </p>
 
+    <mat-divider></mat-divider>
+
     <!-- Sección de conteo de asistentes -->
     <div class="attendees-count">
-      <h4>Asistentes Registrados</h4>
       @if (attendeesCountResource.isLoading()) {
         <p>Cargando...</p>
       } @else {
-        <p>Total: {{ attendeesCountResource.value() || 0 }}</p>
+        <p>Checked-In Attendees: {{ attendeesCountResource.value() || 0 }}</p>
+        <p>Average Rating: {{ averageRatingResource.value() || 'no rating'}} </p>
       }
     </div>
   </mat-card-content>

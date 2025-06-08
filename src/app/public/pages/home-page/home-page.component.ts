@@ -7,6 +7,7 @@ import { EventSummaryComponent } from '../../../engagement/components/event-summ
 import {rxResource} from '@angular/core/rxjs-interop'
 import { EventsService } from '../../../engagement/services/events.service';
 import { AttendesService } from '../../../engagement/services/attendees.service';
+import { RatingService } from '../../../registration/services/rating.service';
 @Component({
   selector: 'app-home-page',
   imports: [MatButtonModule, MatCardModule,MatGridListModule, TranslatePipe, EventSummaryComponent],
@@ -19,6 +20,7 @@ export class HomePageComponent {
 translate = inject(TranslateService);
 private eventsService = inject(EventsService);
 private attendesService = inject(AttendesService);
+private ratingService = inject(RatingService);
 
 limit = signal(10);
 
@@ -36,6 +38,13 @@ attendesResource = rxResource({
   loader: ({ request }) => {
     return this.attendesService.getAtttende(request);
   }
+});
+
+ratingResource = rxResource({
+    request: ()=> ({_limit: this.limit()}),
+    loader: ({request}) => {
+      return this.ratingService.getRating(request);
+    }
 });
 
 
