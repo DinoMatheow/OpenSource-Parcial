@@ -9,7 +9,10 @@
   @for (event of eventsResource.value(); track $index) {
 
     <mat-grid-tile>
-  <app-event-summary [events]="event" ></app-event-summary>
+  <app-event-summary
+   [event]="event"
+   [attendees]="attendesResource.value()?.[$index] || null"
+  ></app-event-summary>
 </mat-grid-tile>
 }
 

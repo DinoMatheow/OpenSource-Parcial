@@ -6,6 +6,7 @@ import {TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { EventSummaryComponent } from '../../../engagement/components/event-summary/event-summary.component';
 import {rxResource} from '@angular/core/rxjs-interop'
 import { EventsService } from '../../../engagement/services/events.service';
+import { AttendesService } from '../../../engagement/services/attendees.service';
 @Component({
   selector: 'app-home-page',
   imports: [MatButtonModule, MatCardModule,MatGridListModule, TranslatePipe, EventSummaryComponent],
@@ -16,9 +17,10 @@ import { EventsService } from '../../../engagement/services/events.service';
 export class HomePageComponent {
 
 translate = inject(TranslateService);
-eventsService = inject(EventsService);
+private eventsService = inject(EventsService);
+private attendesService = inject(AttendesService);
 
-limit = signal(4);
+limit = signal(10);
 
  eventsResource = rxResource({
   request: () => ({limit: this.limit()}),
@@ -28,6 +30,13 @@ limit = signal(4);
 }
 });
 
+
+attendesResource = rxResource({
+  request: () => ({ _limit: this.limit() }),
+  loader: ({ request }) => {
+    return this.attendesService.getAtttende(request);
+  }
+});
 
 
 
