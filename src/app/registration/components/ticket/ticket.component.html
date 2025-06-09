@@ -1,0 +1,17 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+  <mat-form-field appearance="fill">
+    <mat-label>Ticket Identifier</mat-label>
+    <input matInput type="text"  formControlName="ticket" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Rating</mat-label>
+    <input matInput type="number" min="1" max="5" formControlName="rating" />
+  </mat-form-field>
+
+  <div class="button-container">
+    <button class="main-button">Rate Event</button>
+  </div>
+
+
+</form>

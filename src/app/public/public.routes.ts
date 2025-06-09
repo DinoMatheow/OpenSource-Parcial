@@ -18,6 +18,10 @@ export const Publicroutes: Routes = [
           component:HomePageComponent,
       },
       {
+          path: 'home',
+          component:HomePageComponent
+      },
+      {
         path: 'raiz',
         component: RaizComponent,
       },
